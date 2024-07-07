@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TV Show Tracker System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shows">Shows</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/ratings">Ratings</a></li>
+            <li><a href="/all_tables">View All Tables</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Watchlist</h2>
+        <table>
+            <tr>
+                <th>Show ID</th>
+                <th>User ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Description</th>
+                <th>Release Date</th>
+            </tr>
+            {% for show in watchlist %}
+            <tr>
+                <td>{{ show.ShowID }}</td>
+                <td>{{ show.UserID }}</td>
+                <td>{{ show.Title }}</td>
+                <td>{{ show.Genre }}</td>
+                <td>{{ show.Description }}</td>
+                <td>{{ show.ReleaseDate }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Add New Show to Watchlist</h2>
+        <form action="/add_watchlist" method="post">
+            <label for="show_id">Show ID:</label>
+            <input type="number" id="show_id" name="show_id" required><br><br>
+            <label for="user_id">User ID:</label>
+            <input type="number" id="user_id" name="user_id" required><br><br>
+            <input type="submit" value="Add to Watchlist">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 TV Show Tracker</p>
+    </footer>
+</body>
+</html>

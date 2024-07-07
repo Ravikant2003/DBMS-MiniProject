@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TV Show Tracker System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shows">Shows</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/ratings">Ratings</a></li>
+            <li><a href="/all_tables">View All Tables</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Ratings and Reviews</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Show Title</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rating in ratings %}
+                <tr>
+                    <td>{{ rating.UserID }}</td>
+                    <td>{{ rating.Title }}</td>
+                    <td>{{ rating.Rating }}</td>
+                    <td>{{ rating.Review }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Add New Rating</h2>
+        <form action="/add_rating" method="post">
+            <label for="user_id">User ID:</label>
+            <input type="number" id="user_id" name="user_id" required><br><br>
+            <label for="show_id">Show ID:</label>
+            <input type="number" id="show_id" name="show_id" required><br><br>
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" required></textarea><br><br>
+            <input type="submit" value="Add Rating">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 TV Show Tracker</p>
+    </footer>
+</body>
+</html>

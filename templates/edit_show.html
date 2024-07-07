@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Show</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Show</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shows">Shows</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/ratings">Ratings</a></li>
+            <li><a href="/all_tables">View All Tables</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form action="/edit_show/{{ show.ShowID }}" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ show.Title }}" required><br><br>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" value="{{ show.Genre }}" required><br><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required>{{ show.Description }}</textarea><br><br>
+            <label for="release_date">Release Date:</label>
+            <input type="date" id="release_date" name="release_date" value="{{ show.ReleaseDate }}" required><br><br>
+            <input type="submit" value="Update Show">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 TV Show Tracker</p>
+    </footer>
+</body>
+</html>

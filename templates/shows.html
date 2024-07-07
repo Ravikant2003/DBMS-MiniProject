@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Show</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TV Show Tracker System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shows">Shows</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/ratings">Ratings</a></li>
+            <li><a href="/all_tables">View All Tables</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Add New Show</h2>
+        <form action="/add_show" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="a" required><br><br>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" value="s" required><br><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required>s</textarea><br><br>
+            <label for="release_date">Release Date:</label>
+            <input type="date" id="release_date" name="release_date" value="2024-07-04" required><br><br>
+            <label for="time">Time:</label>
+            <input type="text" id="time" name="time" value="00:00:00" required><br><br>
+            <label for="season_number">Season Number:</label>
+            <input type="number" id="season_number" name="season_number" value="3" required><br><br>
+            <label for="episode_number">Episode Number:</label>
+            <input type="number" id="episode_number" name="episode_number" required><br><br>
+            <input type="submit" value="Add Show">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 TV Show Tracker</p>
+    </footer>
+</body>
+</html>

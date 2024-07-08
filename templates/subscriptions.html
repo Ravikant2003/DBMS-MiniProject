@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Subscriptions</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/subscriptions">Subscriptions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Manage Subscriptions</h2>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Payment Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.UserID }}</td>
+                <td>{{ subscription.PaymentStatus }}</td>
+                <td>
+                    <a href="{{ url_for('edit_subscription', user_id=subscription.UserID) }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

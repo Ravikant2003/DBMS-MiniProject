@@ -34,7 +34,7 @@
                 {% for rating in ratings %}
                 <tr>
                     <td>{{ rating.UserID }}</td>
-                    <td>{{ rating.Title }}</td>
+                    <td>{{ rating.title }}</td> <!-- Corrected to 'title' -->
                     <td>{{ rating.Rating }}</td>
                     <td>{{ rating.Review }}</td>
                 </tr>
@@ -54,8 +54,5 @@
             <input type="submit" value="Add Rating">
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 TV Show Tracker</p>
-    </footer>
 </body>
 </html>

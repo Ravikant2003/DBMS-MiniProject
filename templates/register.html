@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TV Show Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Register for TV Show Tracker</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shows">Shows</a></li>
+            <li><a href="/watchlist">Watchlist</a></li>
+            <li><a href="/ratings">Ratings</a></li>
+            <li><a href="/all_tables">View All Tables</a></li>
+            <li><a href="/subscriptions">Subscriptions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Register</h2>
+        <form action="{{ url_for('register') }}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Register</button>
+        </form>
+    </main>
+</body>
+</html>

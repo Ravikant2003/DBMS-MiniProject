@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Subscription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Subscription</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/subscriptions">Subscriptions</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Edit Subscription for User ID {{ subscription.UserID }}</h2>
+        <form action="{{ url_for('edit_subscription', user_id=subscription.UserID) }}" method="post">
+            <label for="payment_status">Payment Status:</label>
+            <input type="text" id="payment_status" name="payment_status" value="{{ subscription.PaymentStatus }}">
+            <button type="submit">Save</button>
+        </form>
+    </main>
+</body>
+</html>

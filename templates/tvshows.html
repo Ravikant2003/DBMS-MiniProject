@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link rel="stylesheet" href="../static/styles.css"> <!-- Link to your external CSS file -->
+    <style>
+        /* Inline styles can also be used here if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TV Shows with Watchlist Count</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Back to Home</a></li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ShowID</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    <th>Release Date</th>
+                    <th>Watchlist Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for show in tvshows %}
+                <tr>
+                    <td>{{ show.ShowID }}</td>
+                    <td>{{ show.Genre }}</td>
+                    <td>{{ show.Description }}</td>
+                    <td>{{ show.ReleaseDate }}</td>
+                    <td>{{ show.Timing }}</td>
+                    <td>{{ show.WatchlistCount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

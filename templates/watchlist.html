@@ -34,7 +34,7 @@
             <tr>
                 <td>{{ show.ShowID }}</td>
                 <td>{{ show.UserID }}</td>
-                <td>{{ show.Title }}</td>
+                <td>{{ show.title }}</td>  <!-- Corrected to 'title' -->
                 <td>{{ show.Genre }}</td>
                 <td>{{ show.Description }}</td>
                 <td>{{ show.ReleaseDate }}</td>
@@ -42,7 +42,7 @@
             {% endfor %}
         </table>
         <h2>Add New Show to Watchlist</h2>
-        <form action="/add_watchlist" method="post">
+        <form action="/watchlist" method="post">
             <label for="show_id">Show ID:</label>
             <input type="number" id="show_id" name="show_id" required><br><br>
             <label for="user_id">User ID:</label>
@@ -50,8 +50,5 @@
             <input type="submit" value="Add to Watchlist">
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 TV Show Tracker</p>
-    </footer>
 </body>
 </html>

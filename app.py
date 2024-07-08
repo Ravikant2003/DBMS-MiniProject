@@ -95,40 +95,13 @@ def add_show():
         description = request.form['description']
         release_date = request.form['release_date']
         time = request.form['time']
-        season_number = request.form['season_number']
-        episode_number = request.form['episode_number']
-        episode_title = request.form['episode_title']
-        air_date = request.form['air_date']
         
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
         try:
-            # Insert into TVShows table
-            cursor.execute("""
-                INSERT INTO TVShows (Title, Genre, Description, ReleaseDate, Timing)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (title, genre, description, release_date, time))
-            conn.commit()
-
-            # Retrieve the auto-generated ShowID
-            show_id = cursor.lastrowid
-
-            # Insert into Seasons table
-            cursor.execute("""
-                INSERT INTO Seasons (ShowID, SeasonNumber)
-                VALUES (%s, %s)
-            """, (show_id, season_number))
-            conn.commit()
-
-            # Retrieve the auto-generated SeasonID
-            season_id = cursor.lastrowid
-
-            # Insert into Episodes table
-            cursor.execute("""
-                INSERT INTO Episodes (SeasonID, EpisodeNumber, Title, AirDate)
-                VALUES (%s, %s, %s, %s)
-            """, (season_id, episode_number, episode_title, air_date))
+            # Call the stored procedure to add a new show
+            cursor.callproc('AddNewShow', (title, genre, description, release_date, time))
             conn.commit()
 
             cursor.close()
@@ -307,6 +280,7 @@ def delete_rating(rating_id):
     conn.close()
     return redirect(url_for('ratings'))
 
+# Route for displaying all TV shows
 @app.route('/tvshows')
 def tvshows():
     conn = mysql.connector.connect(**db_config)
@@ -316,7 +290,6 @@ def tvshows():
     cursor.close()
     conn.close()
     return render_template('tvshows.html', tvshows=tvshows)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
